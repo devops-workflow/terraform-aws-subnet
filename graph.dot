@@ -1,0 +1,42 @@
+digraph {
+	compound = "true"
+	newrank = "true"
+	subgraph "root" {
+		"[root] aws_route_table.subnet" [label = "aws_route_table.subnet", shape = "box"]
+		"[root] aws_route_table_association.subnet" [label = "aws_route_table_association.subnet", shape = "box"]
+		"[root] aws_subnet.subnet" [label = "aws_subnet.subnet", shape = "box"]
+		"[root] provider.aws" [label = "provider.aws", shape = "diamond"]
+		"[root] aws_route_table.subnet" -> "[root] provider.aws"
+		"[root] aws_route_table.subnet" -> "[root] var.azs"
+		"[root] aws_route_table.subnet" -> "[root] var.environment"
+		"[root] aws_route_table.subnet" -> "[root] var.name"
+		"[root] aws_route_table.subnet" -> "[root] var.namespaced"
+		"[root] aws_route_table.subnet" -> "[root] var.propagate_vgws"
+		"[root] aws_route_table.subnet" -> "[root] var.tags"
+		"[root] aws_route_table.subnet" -> "[root] var.vpc_id"
+		"[root] aws_route_table_association.subnet" -> "[root] aws_route_table.subnet"
+		"[root] aws_route_table_association.subnet" -> "[root] aws_subnet.subnet"
+		"[root] aws_subnet.subnet" -> "[root] provider.aws"
+		"[root] aws_subnet.subnet" -> "[root] var.azs"
+		"[root] aws_subnet.subnet" -> "[root] var.cidr_add_bits"
+		"[root] aws_subnet.subnet" -> "[root] var.cidr_block"
+		"[root] aws_subnet.subnet" -> "[root] var.environment"
+		"[root] aws_subnet.subnet" -> "[root] var.map_public_ip_on_launch"
+		"[root] aws_subnet.subnet" -> "[root] var.name"
+		"[root] aws_subnet.subnet" -> "[root] var.namespaced"
+		"[root] aws_subnet.subnet" -> "[root] var.subnet_offset"
+		"[root] aws_subnet.subnet" -> "[root] var.tags"
+		"[root] aws_subnet.subnet" -> "[root] var.vpc_id"
+		"[root] output.availability_zones" -> "[root] aws_subnet.subnet"
+		"[root] output.subnet_ids" -> "[root] aws_subnet.subnet"
+		"[root] output.subnet_route_table_ids" -> "[root] aws_route_table.subnet"
+		"[root] root" -> "[root] aws_route_table_association.subnet"
+		"[root] root" -> "[root] output.availability_zones"
+		"[root] root" -> "[root] output.subnet_ids"
+		"[root] root" -> "[root] output.subnet_route_table_ids"
+		"[root] root" -> "[root] var.cidrs"
+		"[root] root" -> "[root] var.igw_id"
+		"[root] root" -> "[root] var.num_of_azs"
+	}
+}
+
